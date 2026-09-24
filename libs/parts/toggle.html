@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スイッチメニュー</title>
+
+<style>
+/* =========================
+  スイッチを非表示にする
+========================= */
+
+#menu-toggle {
+  display: none;
+}
+
+/* =========================
+   = ボタン
+========================= */
+
+.line {
+  position: relative; top: 0px; right: 0px;
+
+  width:  30px;
+  height: 30px;
+
+  cursor: pointer;
+
+  z-index: 9999;
+}
+.line span {
+  display: block;
+
+  position: absolute;
+
+  width: 30px;
+  height: 2px;
+
+  background-color: rgba(0, 0, 0, 1.0);
+  border-radius: 4px;
+
+  transition: 0.3s;
+}
+.line span:first-child { top:    10px; }
+.line span:last-child  { bottom: 10px; }
+
+/* =========================
+  ディスプレイ全体のレイヤー
+========================= */
+
+.layer {
+  position: fixed; top: 0; left: 0;
+
+  width:  100%;
+  height: 100dvh;
+
+  background-color: rgba(0, 0, 0, 0.72);
+
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  z-index: 999;
+}
+/*
+  レイヤーを閉じる
+*/
+
+.layer {
+  cursor: pointer;
+}
+
+/* =========================
+  メニューリスト
+========================= */
+
+#navi {
+  position: fixed; top: 28px; left: 40px;
+
+  opacity: 0; visibility: hidden;
+
+  transform: translateX(-100%);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.4s ease;
+
+  z-index: 9999;
+}
+#navi li {
+  margin-bottom: 14px;
+}
+#navi a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1.0);
+}
+#navi a:hover {
+  opacity: 0.5;
+}
+
+/* =========================
+  開閉
+========================= */
+
+/*
+  ディスプレイ全体のレイヤー
+*/
+#menu-toggle:checked ~ .layer {
+  visibility: visible; opacity: 1.0; 
+}
+
+#menu-toggle:checked ~ #navi {
+  visibility: visible; opacity: 1.0;
+}
+/*
+  = → × → =
+*/
+#menu-toggle:checked ~ .line span:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+#menu-toggle:checked ~ .line span:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+#menu-toggle:checked ~ .line span {
+  background: #ffffff;
+}
+
+#menu-toggle:checked ~ #navi {
+  visibility: visible;
+  opacity: 1.0;
+
+  /* ← 追加 */
+  transform: translateX(0);
+}
+</style>
+
+  </head>
+
+  <body>
+
+    <!-- 開閉用 -->
+    <input type="checkbox" id="menu-toggle">
+
+    <!-- = ボタン -->
+    <label for="menu-toggle" class="line">
+      <span></span>
+      <span></span>
+    </label>
+    <!-- 画面全体の黒いレイヤー -->
+    <label for="menu-toggle" class="layer"></label>
+
+    <!-- メニュー -->
+    <nav id="navi">
+      <ul>
+        <li>
+          <a href="#1">List 1</a>
+        </li>
+        <li>
+          <a href="#2">List 2</a>
+        </li>
+      </ul>
+    </nav>
+
+  </body>
+
+</html>

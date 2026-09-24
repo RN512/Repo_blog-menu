@@ -1,0 +1,21 @@
+:root {
+  /* 色 */
+  --color_black:  32,  32,  32;
+  --color_gray:  128, 128, 128;
+  --color_white: 255, 255, 255;
+
+  /* システム UI フォント */
+  --font-system:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont;
+
+  --font-japanese:
+    "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN",
+    Meiryo,
+    "MS PGothic";
+
+  --font-generic:
+    sans-serif;
+}
