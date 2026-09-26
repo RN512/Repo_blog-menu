@@ -13,22 +13,55 @@ body {
   <header></header>
   ==================== */
 
+/* ===== <nav></nav> */
+header nav ul {
+  display: flex;
+}
+
 
 /* ====================
   <main></main>
-    <section></sectionv
   ==================== */
 
-/* ===== <section></section> ===== */
+main > section {
+  display: flex;
+}
+
+main > div {
+  display: flex;
+}
+
+/* ===== <section></section> */
 
 /*
-  details
+  ピックアップ
+*/
+
+/*
+  記事
+*/
+
+/*
+  記事に関連
 */
 
 
 /* ====================
   <footer></footer>
   ==================== */
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "abotu menu x-publish"
+    "copyright";
+}
+
+.about-list li::before {
+  content: "▶";
+}
+
 
 
 
